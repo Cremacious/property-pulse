@@ -1,5 +1,4 @@
 import { Schema, model, models } from 'mongoose';
-import { unique } from 'next/dist/build/utils';
 
 const PropertySchema = new Schema(
   {
@@ -20,10 +19,18 @@ const PropertySchema = new Schema(
       type: String,
     },
     location: {
-      street: String,
-      city: String,
-      state: String,
-      zipcode: String,
+      street: {
+        type: String,
+      },
+      city: {
+        type: String,
+      },
+      state: {
+        type: String,
+      },
+      zipcode: {
+        type: String,
+      },
     },
     beds: {
       type: Number,
@@ -37,26 +44,48 @@ const PropertySchema = new Schema(
       type: Number,
       required: true,
     },
-    amenities: [{ type: String }],
+    amenities: [
+      {
+        type: String,
+      },
+    ],
     rates: {
-      nightly: Number,
-      weekly: Number,
-      monthly: Number,
+      nightly: {
+        type: Number,
+      },
+      weekly: {
+        type: Number,
+      },
+      monthly: {
+        type: Number,
+      },
     },
     seller_info: {
-      name: String,
-      phone: String,
-      email: String,
+      name: {
+        type: String,
+      },
+      email: {
+        type: String,
+      },
+      phone: {
+        type: String,
+      },
     },
-    images: [{ type: String }],
+    images: [
+      {
+        type: String,
+      },
+    ],
     is_featured: {
       type: Boolean,
       default: false,
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
 
 const Property = models.Property || model('Property', PropertySchema);
 
-export default user;
+export default Property;
