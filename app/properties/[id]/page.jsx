@@ -1,6 +1,7 @@
 import connectDB from '@/config/database';
 import Property from '@/models/Property';
 import PropertyHeaderImage from '@/components/PropertyHeaderImage';
+import PropertyDetails from '@/components/PropertyDetails';
 import Link from 'next/link';
 import { FaArrowLeft } from 'react-icons/fa';
 
@@ -21,10 +22,10 @@ const PropertyPage = async ({ params }) => {
           </Link>
         </div>
       </section>
-      <section class="bg-blue-50">
-        <div class="container m-auto py-10 px-6">
-          <div class="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
-            {/* Property Info */}
+      <section className="bg-blue-50">
+        <div className="container m-auto py-10 px-6">
+          <div className="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
+            <PropertyDetails property={property} />
           </div>
         </div>
       </section>
