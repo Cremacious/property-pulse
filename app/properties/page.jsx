@@ -2,7 +2,6 @@
 import PropertyCard from '@/components/PropertyCard';
 import connectDB from '@/config/database';
 import Property from '@/models/Property';
-import { workUnitAsyncStorage } from 'next/dist/server/app-render/work-unit-async-storage.external';
 
 const PropertiesPage = async () => {
   await connectDB();
