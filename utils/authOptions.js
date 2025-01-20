@@ -38,7 +38,7 @@ export const authOptions = {
       // 4. Return true to allow sign in
       return true;
     },
-    // Modifies the session object
+    // Modifies the session object?
     async session({ session }) {
       // 1. Get user from database
       const user = await User.findOne({ email: session.user.email });
