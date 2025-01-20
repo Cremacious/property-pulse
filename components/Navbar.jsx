@@ -12,6 +12,7 @@ import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
 const NavBar = () => {
   const { data: session } = useSession();
+  console.log(session);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [providers, setProviders] = useState(null);
