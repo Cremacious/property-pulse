@@ -4,6 +4,7 @@ import Property from '@/models/Property';
 import { getSessionUser } from '@/utils/getSessionUser';
 import profileDefault from '@/assets/images/profile.png';
 import ProfileProperties from '@/components/ProfileProperties';
+import { convertToSerializedObject } from '@/utils/convertToObject';
 
 const ProfilePage = async () => {
   await connectDB();
@@ -14,7 +15,8 @@ const ProfilePage = async () => {
     throw new Error('You must be logged in to view this page');
   }
 
-  const properties = await Property.find({ owner: userId }).lean();
+  const propertiesDocs = await Property.find({ owner: userId }).lean();
+  const properties = propertiesDocs.map(convertToSerializedObject);
 
   return (
     <section className="bg-blue-50">
