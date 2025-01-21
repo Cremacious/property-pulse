@@ -1,21 +1,27 @@
 'use client';
 import { useState } from 'react';
+import Image from 'next/image';
 
 const ProfileProperties = ({ properties: initialProperties }) => {
   const [properties, setProperties] = useState(initialProperties);
 
   return properties.map((property) => (
-    <div className="mb-10">
+    <div key={property._id} className="mb-10">
       <a href="/property.html">
-        <img
+        <Image
           className="h-32 w-full rounded-md object-cover"
-          src="/images/properties/a1.jpg"
+          src={property.images[0]}
           alt="Property 1"
+          width={800}
+          height={400}
         />
       </a>
       <div className="mt-2">
-        <p className="text-lg font-semibold">Property Title 1</p>
-        <p className="text-gray-600">Address: 123 Main St</p>
+        <p className="text-lg font-semibold">{property.name}</p>
+        <p className="text-gray-600">
+          {property.location.street}, {property.location.city}{' '}
+          {property.location.state}
+        </p>
       </div>
       <div className="mt-2">
         <a
