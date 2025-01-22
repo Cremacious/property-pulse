@@ -1,6 +1,9 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { setDefaults, fromAddress } from 'react-geocode';
+import Map, {Marker} from 'react-map-gl';
+import Image from 'next/image';
+import pin from '@/assets/images/pin.svg';
 
 const PropertyMap = ({ property }) => {
   const [lat, setLat] = useState(null);
@@ -25,9 +28,7 @@ const PropertyMap = ({ property }) => {
         const res = await fromAddress(
           `${property.location.street} ${property.location.city} ${property.location.state} ${property.location.zipcode}`
         );
-        //  Check for results
         if (res.results.length === 0) {
-          // No results found
           setGeocodeError(true);
           setLoading(false);
           return;
