@@ -16,7 +16,7 @@ async function bookmarkProperty(propertyId) {
   const { userId } = sessionUser;
   const user = await User.findById(userId);
 
-  const isBookmarked = user.bookmarks.includes(propertyId);
+  let isBookmarked = user.bookmarks.includes(propertyId);
 
   let message;
 
