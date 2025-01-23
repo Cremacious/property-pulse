@@ -1,10 +1,29 @@
-import { FaShare } from 'react-icons/fa';
+'use client';
+import { FacebookShareButton, TwitterShareButton } from 'react-share';
 
-const ShareButtons = () => {
+const ShareButtons = ({ property }) => {
+  const shareUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/properties/${property._id}`;
+
   return (
-    <button className="bg-orange-500 hover:bg-orange-600 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center">
-      <FaShare className="mr-2" /> Share Property
-    </button>
+    <>
+      <h3 className="text-center font-bold text-2xl">Share This Property</h3>
+      <div className="pb-5 flex gap-3 justify-center">
+        <FacebookShareButton
+          url={shareUrl}
+          quote={property.name}
+          hashtag={`#${property.type.replace(/\s/g, '')} For Rent`}
+        >
+          <button className="bg-blue-600 text-white px-4 py-2 rounded">
+            Share on Facebook
+          </button>
+        </FacebookShareButton>
+        <TwitterShareButton url={shareUrl}>
+          <button className="bg-blue-400 text-white px-4 py-2 rounded">
+            Share on Twitter
+          </button>
+        </TwitterShareButton>
+      </div>
+    </>
   );
 };
 
